@@ -158,23 +158,23 @@ button:disabled{
   <label>Carica racconto</label>
   <input type="file" id="file" name="racconto" accept=".pdf,.doc,.docx" required disabled>
 
-  <div class="privacy">
+<div class="privacy">
 
-    <label>
-      <input type="checkbox" id="regolamento">
-      Accetto il regolamento
-    </label>
+  <label style="display:flex; align-items:flex-start; gap:10px;">
+    <input type="checkbox" id="regolamento">
+    <span>Accetto il regolamento</span>
+  </label>
 
-    <label>
-      <input type="checkbox" id="privacy">
-      Accetto la privacy GDPR
-    </label>
+  <label style="display:flex; align-items:flex-start; gap:10px;">
+    <input type="checkbox" id="privacy">
+    <span>Accetto la privacy GDPR</span>
+  </label>
 
-    <div class="small">
-      Devi accettare entrambi per poter inviare il modulo.
-    </div>
-
+  <div class="small">
+    Devi accettare entrambi per poter inviare il modulo.
   </div>
+
+</div>
 
   <button type="submit" id="submit" disabled>
     Invia iscrizione
