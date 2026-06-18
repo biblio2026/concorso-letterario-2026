@@ -6,135 +6,73 @@
   <title>Concorso Letterario</title>
 
   <style>
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
     body{
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:Arial;
       background:#f5f5f5;
+      margin:0;
       color:#222;
-      line-height:1.6;
     }
 
     header{
       background:#111827;
       color:white;
-      padding:60px 20px;
+      padding:50px 20px;
       text-align:center;
-    }
-
-    header h1{
-      font-size:3rem;
-      margin-bottom:10px;
-    }
-
-    header p{
-      font-size:1.2rem;
-      opacity:0.9;
     }
 
     .container{
       max-width:900px;
       margin:auto;
-      padding:40px 20px;
+      padding:30px 20px;
     }
 
     .card{
       background:white;
-      padding:30px;
+      padding:25px;
       border-radius:12px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.08);
-      margin-bottom:30px;
-    }
-
-    h2{
-      margin-bottom:15px;
-      color:#111827;
-    }
-
-    ul{
-      margin-left:20px;
-      margin-top:10px;
-    }
-
-    .deadline{
-      font-size:1.2rem;
-      font-weight:bold;
-      color:#b91c1c;
-      margin-top:10px;
-    }
-
-    form{
-      display:flex;
-      flex-direction:column;
-      gap:18px;
+      margin-bottom:20px;
     }
 
     label{
       font-weight:bold;
+      display:block;
+      margin-top:10px;
+      margin-bottom:5px;
     }
 
-    input,
-    textarea,
-    select{
+    input, select, textarea{
       width:100%;
-      padding:12px;
+      padding:10px;
       border:1px solid #ccc;
       border-radius:8px;
-      font-size:1rem;
-    }
-
-    input[type="file"]{
-      padding:10px;
-      background:#fafafa;
     }
 
     button{
+      margin-top:15px;
+      width:100%;
+      padding:12px;
       background:#111827;
       color:white;
       border:none;
-      padding:14px;
       border-radius:8px;
-      font-size:1rem;
       cursor:pointer;
-      transition:0.2s;
     }
 
-    button:hover{
-      background:#1f2937;
+    button:disabled{
+      background:#888;
+      cursor:not-allowed;
     }
 
-    .footer{
-      text-align:center;
-      padding:30px;
-      color:#666;
-      font-size:0.9rem;
-    }
-
-    .success{
-      display:none;
-      background:#dcfce7;
-      color:#166534;
-      padding:15px;
-      border-radius:8px;
-      margin-top:20px;
-    }
-
-    .rules{
-      background:#f9fafb;
-      padding:15px;
-      border-radius:8px;
-      border:1px solid #e5e7eb;
+    .privacy{
+      display:flex;
+      gap:10px;
       margin-top:15px;
+      align-items:flex-start;
     }
 
-    @media(max-width:700px){
-      header h1{
-        font-size:2rem;
-      }
+    .privacy input{
+      width:auto;
+      margin-top:4px;
     }
   </style>
 </head>
@@ -143,137 +81,71 @@
 
 <header>
   <h1>Concorso Letterario 2026</h1>
-  <p>Invia il tuo racconto originale e partecipa al concorso</p>
 </header>
 
 <div class="container">
 
   <div class="card">
-    <h2>Informazioni</h2>
 
-    <p>
-      Il concorso è aperto a tutti gli autori di racconti brevi in lingua italiana.
-    </p>
+    <form id="form">
 
-    <div class="deadline">
-      Scadenza invio: 30 Settembre 2026
-    </div>
+      <label>Nome e Cognome</label>
+      <input type="text" name="nome" required>
 
-    <div class="rules">
-      <strong>Regole principali:</strong>
+      <label>Email</label>
+      <input type="email" name="email" required>
 
-      <ul>
-        <li>Opera originale e inedita</li>
-        <li>Formato PDF o DOCX</li>
-        <li>Lunghezza massima: 20.000 caratteri</li>
-        <li>Una sola opera per partecipante</li>
-      </ul>
-    </div>
-  </div>
+      <label>Anno di nascita</label>
+      <input type="number" name="anno_nascita" min="1900" max="2026" required>
 
-  <div class="card">
-    <h2>Iscrizione</h2>
+      <label>Citt� di residenza</label>
+      <input type="text" name="citta" required>
 
-    <!-- 
-      SOSTITUISCI ACTION CON IL TUO ENDPOINT:
-      - OpnForm
-      - Formspree
-      - Netlify Forms
-      - backend personale
-    -->
+      <label>Provincia</label>
+      <input type="text" name="provincia" maxlength="2" required>
 
-    <form
-      action="https://TUO-ENDPOINT"
-      method="POST"
-      enctype="multipart/form-data"
-    >
+      <label>Titolo racconto</label>
+      <input type="text" name="titolo" required>
 
-      <div>
-        <label>Nome e Cognome</label>
-        <input
-          type="text"
-          name="nome"
-          required
-        />
-      </div>
+      <label>Categoria</label>
+      <select name="categoria" required>
+        <option value="">Seleziona</option>
+        <option>Narrativa</option>
+        <option>Fantasy</option>
+        <option>Giallo</option>
+        <option>Fantascienza</option>
+      </select>
 
-      <div>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          required
-        />
-      </div>
+      <label>Carica racconto (PDF/DOC)</label>
+      <input type="file" name="racconto" id="file" accept=".pdf,.doc,.docx" required disabled>
 
-      <div>
-        <label>Titolo del racconto</label>
-        <input
-          type="text"
-          name="titolo"
-          required
-        />
-      </div>
-
-      <div>
-        <label>Categoria</label>
-
-        <select name="categoria" required>
-          <option value="">Seleziona</option>
-          <option>Narrativa</option>
-          <option>Fantasy</option>
-          <option>Giallo</option>
-          <option>Fantascienza</option>
-          <option>Poesia</option>
-        </select>
-      </div>
-
-      <div>
-        <label>Breve biografia</label>
-
-        <textarea
-          name="bio"
-          rows="5"
-        ></textarea>
-      </div>
-
-      <div>
-        <label>Carica il racconto</label>
-
-        <input
-          type="file"
-          name="racconto"
-          accept=".pdf,.doc,.docx"
-          required
-        />
-      </div>
-
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            required
-          />
-          Accetto il regolamento e autorizzo il trattamento dei dati personali.
+      <div class="privacy">
+        <input type="checkbox" id="privacy" required>
+        <label for="privacy">
+          Accetto privacy e trattamento dati GDPR
         </label>
       </div>
 
-      <button type="submit">
-        Invia Racconto
+      <button type="submit" id="submit" disabled>
+        Invia iscrizione
       </button>
 
     </form>
 
-    <div class="success">
-      Iscrizione inviata correttamente.
-    </div>
   </div>
 
 </div>
 
-<div class="footer">
-  © 2026 Concorso Letterario
-</div>
+<script>
+const privacy = document.getElementById("privacy");
+const file = document.getElementById("file");
+const submit = document.getElementById("submit");
+
+privacy.addEventListener("change", () => {
+  file.disabled = !privacy.checked;
+  submit.disabled = !privacy.checked;
+});
+</script>
 
 </body>
 </html>
