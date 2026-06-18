@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Concorso Letterario</title>
+
+  <style>
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:#f5f5f5;
+      color:#222;
+      line-height:1.6;
+    }
+
+    header{
+      background:#111827;
+      color:white;
+      padding:60px 20px;
+      text-align:center;
+    }
+
+    header h1{
+      font-size:3rem;
+      margin-bottom:10px;
+    }
+
+    header p{
+      font-size:1.2rem;
+      opacity:0.9;
+    }
+
+    .container{
+      max-width:900px;
+      margin:auto;
+      padding:40px 20px;
+    }
+
+    .card{
+      background:white;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+      margin-bottom:30px;
+    }
+
+    h2{
+      margin-bottom:15px;
+      color:#111827;
+    }
+
+    ul{
+      margin-left:20px;
+      margin-top:10px;
+    }
+
+    .deadline{
+      font-size:1.2rem;
+      font-weight:bold;
+      color:#b91c1c;
+      margin-top:10px;
+    }
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    label{
+      font-weight:bold;
+    }
+
+    input,
+    textarea,
+    select{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:8px;
+      font-size:1rem;
+    }
+
+    input[type="file"]{
+      padding:10px;
+      background:#fafafa;
+    }
+
+    button{
+      background:#111827;
+      color:white;
+      border:none;
+      padding:14px;
+      border-radius:8px;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    button:hover{
+      background:#1f2937;
+    }
+
+    .footer{
+      text-align:center;
+      padding:30px;
+      color:#666;
+      font-size:0.9rem;
+    }
+
+    .success{
+      display:none;
+      background:#dcfce7;
+      color:#166534;
+      padding:15px;
+      border-radius:8px;
+      margin-top:20px;
+    }
+
+    .rules{
+      background:#f9fafb;
+      padding:15px;
+      border-radius:8px;
+      border:1px solid #e5e7eb;
+      margin-top:15px;
+    }
+
+    @media(max-width:700px){
+      header h1{
+        font-size:2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Concorso Letterario 2026</h1>
+  <p>Invia il tuo racconto originale e partecipa al concorso</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Informazioni</h2>
+
+    <p>
+      Il concorso è aperto a tutti gli autori di racconti brevi in lingua italiana.
+    </p>
+
+    <div class="deadline">
+      Scadenza invio: 30 Settembre 2026
+    </div>
+
+    <div class="rules">
+      <strong>Regole principali:</strong>
+
+      <ul>
+        <li>Opera originale e inedita</li>
+        <li>Formato PDF o DOCX</li>
+        <li>Lunghezza massima: 20.000 caratteri</li>
+        <li>Una sola opera per partecipante</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Iscrizione</h2>
+
+    <!-- 
+      SOSTITUISCI ACTION CON IL TUO ENDPOINT:
+      - OpnForm
+      - Formspree
+      - Netlify Forms
+      - backend personale
+    -->
+
+    <form
+      action="https://TUO-ENDPOINT"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+
+      <div>
+        <label>Nome e Cognome</label>
+        <input
+          type="text"
+          name="nome"
+          required
+        />
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          required
+        />
+      </div>
+
+      <div>
+        <label>Titolo del racconto</label>
+        <input
+          type="text"
+          name="titolo"
+          required
+        />
+      </div>
+
+      <div>
+        <label>Categoria</label>
+
+        <select name="categoria" required>
+          <option value="">Seleziona</option>
+          <option>Narrativa</option>
+          <option>Fantasy</option>
+          <option>Giallo</option>
+          <option>Fantascienza</option>
+          <option>Poesia</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Breve biografia</label>
+
+        <textarea
+          name="bio"
+          rows="5"
+        ></textarea>
+      </div>
+
+      <div>
+        <label>Carica il racconto</label>
+
+        <input
+          type="file"
+          name="racconto"
+          accept=".pdf,.doc,.docx"
+          required
+        />
+      </div>
+
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            required
+          />
+          Accetto il regolamento e autorizzo il trattamento dei dati personali.
+        </label>
+      </div>
+
+      <button type="submit">
+        Invia Racconto
+      </button>
+
+    </form>
+
+    <div class="success">
+      Iscrizione inviata correttamente.
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 Concorso Letterario
+</div>
+
+</body>
+</html>
