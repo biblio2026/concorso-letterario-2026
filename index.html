@@ -1,80 +1,94 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Concorso Letterario</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Concorso Letterario</title>
 
-  <style>
-    body{
-      font-family:Arial;
-      background:#f5f5f5;
-      margin:0;
-      color:#222;
-    }
+<style>
+body{
+  font-family:Arial;
+  margin:0;
+  background:#f5f5f5;
+  color:#222;
+}
 
-    header{
-      background:#111827;
-      color:white;
-      padding:50px 20px;
-      text-align:center;
-    }
+header{
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:50px 20px;
+}
 
-    .container{
-      max-width:900px;
-      margin:auto;
-      padding:30px 20px;
-    }
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:25px;
+}
 
-    .card{
-      background:white;
-      padding:25px;
-      border-radius:12px;
-      margin-bottom:20px;
-    }
+.card{
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
 
-    label{
-      font-weight:bold;
-      display:block;
-      margin-top:10px;
-      margin-bottom:5px;
-    }
+h2{
+  margin-top:0;
+}
 
-    input, select, textarea{
-      width:100%;
-      padding:10px;
-      border:1px solid #ccc;
-      border-radius:8px;
-    }
+.row{
+  display:flex;
+  gap:15px;
+}
 
-    button{
-      margin-top:15px;
-      width:100%;
-      padding:12px;
-      background:#111827;
-      color:white;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-    }
+.row > div{
+  flex:1;
+}
 
-    button:disabled{
-      background:#888;
-      cursor:not-allowed;
-    }
+label{
+  font-weight:bold;
+  display:block;
+  margin-top:10px;
+  margin-bottom:5px;
+}
 
-    .privacy{
-      display:flex;
-      gap:10px;
-      margin-top:15px;
-      align-items:flex-start;
-    }
+input, select{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
 
-    .privacy input{
-      width:auto;
-      margin-top:4px;
-    }
-  </style>
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  border:none;
+  border-radius:8px;
+  background:#111827;
+  color:white;
+  cursor:pointer;
+}
+
+button:disabled{
+  background:#888;
+  cursor:not-allowed;
+}
+
+.privacy{
+  margin-top:15px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.small{
+  font-size:0.9rem;
+  color:#555;
+}
+</style>
 </head>
 
 <body>
@@ -85,66 +99,111 @@
 
 <div class="container">
 
-  <div class="card">
+<!-- BOX INFORMAZIONI -->
+<div class="card">
+  <h2>Informazioni</h2>
+  <p>
+    Il concorso è aperto a racconti brevi in lingua italiana.
+  </p>
 
-    <form id="form">
+  <ul>
+    <li>Opera originale e inedita</li>
+    <li>Formato PDF o DOCX</li>
+    <li>Lunghezza massima 20.000 caratteri</li>
+    <li>Una sola opera per partecipante</li>
+  </ul>
+</div>
 
-      <label>Nome e Cognome</label>
-      <input type="text" name="nome" required>
+<!-- FORM -->
+<div class="card">
 
+<form id="form">
+
+  <label>Nome e Cognome</label>
+  <input type="text" name="nome" required>
+
+  <!-- EMAIL + ANNO NASCITA -->
+  <div class="row">
+    <div>
       <label>Email</label>
       <input type="email" name="email" required>
+    </div>
 
+    <div>
       <label>Anno di nascita</label>
-      <input type="number" name="anno_nascita" min="1900" max="2026" required>
-
-      <label>Citt� di residenza</label>
-      <input type="text" name="citta" required>
-
-      <label>Provincia</label>
-      <input type="text" name="provincia" maxlength="2" required>
-
-      <label>Titolo racconto</label>
-      <input type="text" name="titolo" required>
-
-      <label>Categoria</label>
-      <select name="categoria" required>
-        <option value="">Seleziona</option>
-        <option>Narrativa</option>
-        <option>Fantasy</option>
-        <option>Giallo</option>
-        <option>Fantascienza</option>
-      </select>
-
-      <label>Carica racconto (PDF/DOC)</label>
-      <input type="file" name="racconto" id="file" accept=".pdf,.doc,.docx" required disabled>
-
-      <div class="privacy">
-        <input type="checkbox" id="privacy" required>
-        <label for="privacy">
-          Accetto privacy e trattamento dati GDPR
-        </label>
-      </div>
-
-      <button type="submit" id="submit" disabled>
-        Invia iscrizione
-      </button>
-
-    </form>
-
+      <input type="number" name="anno" min="1900" max="2026" required>
+    </div>
   </div>
 
+  <!-- CITTA + PROVINCIA -->
+  <div class="row">
+    <div>
+      <label>Città di residenza</label>
+      <input type="text" name="citta" required>
+    </div>
+
+    <div>
+      <label>Provincia</label>
+      <input type="text" name="provincia" maxlength="2" required>
+    </div>
+  </div>
+
+  <label>Titolo racconto</label>
+  <input type="text" name="titolo" required>
+
+  <label>Categoria</label>
+  <select name="categoria" required>
+    <option value="">Seleziona</option>
+    <option>Narrativa</option>
+    <option>Fantasy</option>
+    <option>Giallo</option>
+    <option>Fantascienza</option>
+  </select>
+
+  <label>Carica racconto</label>
+  <input type="file" id="file" name="racconto" accept=".pdf,.doc,.docx" required disabled>
+
+  <!-- PRIVACY + REGOLAMENTO -->
+  <div class="privacy">
+
+    <label>
+      <input type="checkbox" id="regolamento">
+      Accetto il regolamento
+    </label>
+
+    <label>
+      <input type="checkbox" id="privacy">
+      Accetto la privacy GDPR
+    </label>
+
+    <div class="small">
+      Devi accettare entrambi per poter inviare il modulo.
+    </div>
+  </div>
+
+  <button type="submit" id="submit" disabled>
+    Invia iscrizione
+  </button>
+
+</form>
+
+</div>
 </div>
 
 <script>
-const privacy = document.getElementById("privacy");
+const reg = document.getElementById("regolamento");
+const priv = document.getElementById("privacy");
 const file = document.getElementById("file");
 const submit = document.getElementById("submit");
 
-privacy.addEventListener("change", () => {
-  file.disabled = !privacy.checked;
-  submit.disabled = !privacy.checked;
-});
+function check() {
+  const ok = reg.checked && priv.checked;
+  file.disabled = !ok;
+  submit.disabled = !ok;
+}
+
+reg.addEventListener("change", check);
+priv.addEventListener("change", check);
 </script>
 
 </body>
