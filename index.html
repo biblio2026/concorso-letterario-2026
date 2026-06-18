@@ -7,7 +7,7 @@
 
 <style>
 body{
-  font-family:Arial;
+  font-family:Arial, sans-serif;
   margin:0;
   background:#f5f5f5;
   color:#222;
@@ -59,6 +59,7 @@ input, select{
   padding:10px;
   border-radius:8px;
   border:1px solid #ccc;
+  box-sizing:border-box;
 }
 
 button{
@@ -77,6 +78,7 @@ button:disabled{
   cursor:not-allowed;
 }
 
+/* CHECKBOX FIX PERFETTO */
 .privacy{
   margin-top:15px;
   display:flex;
@@ -84,10 +86,28 @@ button:disabled{
   gap:10px;
 }
 
+.check-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.check-row input{
+  width:16px;
+  height:16px;
+  margin:0;
+  flex-shrink:0;
+  transform:translateY(1px);
+}
+
+.check-row span{
+  line-height:1.2;
+}
+
 .small{
   font-size:0.9rem;
   color:#555;
-  margin-top:5px;
+  margin-top:8px;
 }
 </style>
 </head>
@@ -100,14 +120,12 @@ button:disabled{
 
 <div class="container">
 
-<!-- BOX INFORMAZIONI AGGIUNTO -->
+<!-- INFO -->
 <div class="card">
   <h2>Informazioni</h2>
-
   <p>
     Il concorso è aperto a tutti gli autori di racconti brevi in lingua italiana.
   </p>
-
   <p><strong>Scadenza invio:</strong> 30 Settembre 2026</p>
 </div>
 
@@ -157,23 +175,25 @@ button:disabled{
 
   <label>Carica racconto</label>
   <input type="file" id="file" name="racconto" accept=".pdf,.doc,.docx" required disabled>
-<div class="privacy">
 
-  <label class="check-row">
-    <input type="checkbox" id="regolamento">
-    <span>Accetto il regolamento</span>
-  </label>
+  <!-- PRIVACY -->
+  <div class="privacy">
 
-  <label class="check-row">
-    <input type="checkbox" id="privacy">
-    <span>Accetto la privacy GDPR</span>
-  </label>
+    <label class="check-row">
+      <input type="checkbox" id="regolamento">
+      <span>Accetto il regolamento</span>
+    </label>
 
-  <div class="small">
-    Devi accettare entrambi per poter inviare il modulo.
+    <label class="check-row">
+      <input type="checkbox" id="privacy">
+      <span>Accetto la privacy GDPR</span>
+    </label>
+
+    <div class="small">
+      Devi accettare entrambi per poter inviare il modulo.
+    </div>
+
   </div>
-
-</div>
 
   <button type="submit" id="submit" disabled>
     Invia iscrizione
