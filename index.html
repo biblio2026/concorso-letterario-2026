@@ -81,12 +81,13 @@ button:disabled{
   margin-top:15px;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:10px;
 }
 
 .small{
   font-size:0.9rem;
   color:#555;
+  margin-top:5px;
 }
 </style>
 </head>
@@ -99,19 +100,15 @@ button:disabled{
 
 <div class="container">
 
-<!-- BOX INFORMAZIONI -->
+<!-- BOX INFORMAZIONI AGGIUNTO -->
 <div class="card">
   <h2>Informazioni</h2>
+
   <p>
-    Il concorso è aperto a racconti brevi in lingua italiana.
+    Il concorso è aperto a tutti gli autori di racconti brevi in lingua italiana.
   </p>
 
-  <ul>
-    <li>Opera originale e inedita</li>
-    <li>Formato PDF o DOCX</li>
-    <li>Lunghezza massima 20.000 caratteri</li>
-    <li>Una sola opera per partecipante</li>
-  </ul>
+  <p><strong>Scadenza invio:</strong> 30 Settembre 2026</p>
 </div>
 
 <!-- FORM -->
@@ -122,7 +119,6 @@ button:disabled{
   <label>Nome e Cognome</label>
   <input type="text" name="nome" required>
 
-  <!-- EMAIL + ANNO NASCITA -->
   <div class="row">
     <div>
       <label>Email</label>
@@ -131,11 +127,10 @@ button:disabled{
 
     <div>
       <label>Anno di nascita</label>
-      <input type="number" name="anno" min="1900" max="2026" required>
+      <input type="number" name="anno" min="1930" max="2026" required>
     </div>
   </div>
 
-  <!-- CITTA + PROVINCIA -->
   <div class="row">
     <div>
       <label>Città di residenza</label>
@@ -163,7 +158,6 @@ button:disabled{
   <label>Carica racconto</label>
   <input type="file" id="file" name="racconto" accept=".pdf,.doc,.docx" required disabled>
 
-  <!-- PRIVACY + REGOLAMENTO -->
   <div class="privacy">
 
     <label>
@@ -179,6 +173,7 @@ button:disabled{
     <div class="small">
       Devi accettare entrambi per poter inviare il modulo.
     </div>
+
   </div>
 
   <button type="submit" id="submit" disabled>
@@ -188,6 +183,7 @@ button:disabled{
 </form>
 
 </div>
+
 </div>
 
 <script>
@@ -196,7 +192,7 @@ const priv = document.getElementById("privacy");
 const file = document.getElementById("file");
 const submit = document.getElementById("submit");
 
-function check() {
+function check(){
   const ok = reg.checked && priv.checked;
   file.disabled = !ok;
   submit.disabled = !ok;
